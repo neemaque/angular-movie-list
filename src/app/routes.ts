@@ -1,6 +1,7 @@
 import {Routes} from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {DetailsComponent} from './details/details.component';
+import {GenreComponent} from './genre/genre.component';
 
 const routeConfig: Routes = [
     {
@@ -15,7 +16,7 @@ const routeConfig: Routes = [
     },
     {
       path: 'genre/:genre',
-      component: DetailsComponent,
+      component: GenreComponent,
       title: 'Movies of a Genre',
     },
   ];

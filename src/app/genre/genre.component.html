@@ -1,0 +1,7 @@
+<h3 style="padding-bottom: 20px;">All movies in the {{genre}} genre:</h3>
+<section class="results">
+    <app-movie
+      *ngFor="let movie of moviesList"
+      [movie]="movie"
+    ></app-movie>
+  </section>

@@ -19,7 +19,13 @@ export class MovieService {
     return this.moviesList.find((movie) => movie.id === id)
   }
   getMoviesByGenre(genre: string): Movie[]{
-    return this.moviesList.filter(movie => movie.genre="animated")
+    return this.moviesList.filter(movie => movie.genre === genre)
+  }
+  changeMovie(id: number, name: string, finished: boolean, review: string, score: number, genre:string){
+    this.moviesList[id-1].name = name;
+    this.moviesList[id-1].review = review;
+    this.moviesList[id-1].genre = genre;
+    this.moviesList[id-1].score = score;
   }
   constructor() { }
 }

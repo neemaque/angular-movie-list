@@ -1,24 +1,27 @@
 import { Component, inject } from '@angular/core';
 import {CommonModule} from '@angular/common';
 import { Movie } from '../movie';
+import {ActivatedRoute, Router} from '@angular/router';
 import {MovieComponent} from '../movie/movie.component';
 import {MovieService} from '../movie.service';
 import {RouterModule, RouterOutlet} from '@angular/router';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-genre',
   standalone: true,
   imports: [CommonModule, MovieComponent, RouterModule, RouterOutlet],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
+  templateUrl: './genre.component.html',
+  styles: ``
 })
-export class HomeComponent {
+export class GenreComponent {
+  route: ActivatedRoute = inject(ActivatedRoute);
+
   moviesList: Movie[] = [];
   movieService: MovieService = inject(MovieService)
+  genre: string;
 
   constructor(){
-    this.moviesList = this.movieService.getAllMovies();
+    this.genre = String(this.route.snapshot.params['genre']);
+    this.moviesList = this.movieService.getMoviesByGenre(this.genre);
   }
-
-
 }

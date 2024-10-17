@@ -1,1 +1,19 @@
 <h1>{{ movie?.name }}</h1>
+<div class="container">
+<form [formGroup]="formChange" (submit)="submitChange()">
+    <label for="name">Movie Name:</label>
+    <input id="name" type="text" formControlName="name"/>
+    
+    <label for="genre">Movie Genre:</label>
+    <input id="genre" type="text" formControlName="genre" value="{{ movie?.genre }}" />
+    
+    <label for="review">Your Review:</label>
+    <input id="review" type="text" formControlName="review" value="{{ movie?.review }}" />
+
+    <label>Score: {{ newScore }} / 5</label>
+    <button (click)="increaseScore()" class="scoreButtons">+</button> <button (click)="decreaseScore()" class="scoreButtons">-</button>
+
+    <button class="submit" type="submit">Done</button>
+
+</form>
+</div>
