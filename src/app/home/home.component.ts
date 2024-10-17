@@ -18,5 +18,6 @@ export class HomeComponent {
   constructor(){
     this.moviesList = this.movieService.getAllMovies();
   }
+  
 
 }

@@ -1,6 +1,6 @@
 
 <section class="movie_listing">
-    <h2>{{ movie.name }}</h2>
+    <a [routerLink]="['/details', movie.id]"><h2>{{ movie.name }}</h2></a>
     <p>{{ movie. review }}<p>
     <p>score: {{movie.score}} </p>
 </section>

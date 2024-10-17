@@ -7,6 +7,9 @@ header {
   padding: var(--content-padding);
   box-shadow: 0px 5px 25px var(--shadow-color);
 }
+a{
+  text-decoration-line: none;
+}
 .content {
   padding: var(--content-padding);
 }
