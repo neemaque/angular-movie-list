@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import { Movie } from '../movie';
 import {MovieComponent} from '../movie/movie.component';
 import {MovieService} from '../movie.service';
-import {RouterModule, RouterOutlet} from '@angular/router';
+import {RouterModule, RouterOutlet, Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -15,10 +15,16 @@ import {RouterModule, RouterOutlet} from '@angular/router';
 export class HomeComponent {
   moviesList: Movie[] = [];
   movieService: MovieService = inject(MovieService)
+  addId: Number;
 
-  constructor(){
+  constructor(private router: Router){
     this.moviesList = this.movieService.getAllMovies();
+    this.addId = this.moviesList.length+1;
   }
-
-
+  
+  addMovie(){
+    this.addId = this.moviesList.length+1;
+    console.log("hi");
+    this.router.navigateByUrl('add/'+ this.addId);
+  }
 }

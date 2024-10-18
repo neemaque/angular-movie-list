@@ -1,6 +1,7 @@
 
 <section class="movie_listing">
     <a [routerLink]="['/details', movie.id]"><h2>{{ movie.name }}</h2></a>
-    <p>{{ movie. review }}<p>
-    <p>score: {{movie.score}} </p>
+    <h6 *ngIf="!movie.finished">(Unfinished)</h6>
+    <p *ngIf="movie.finished">{{ movie. review }}<p>
+    <p *ngIf="movie.finished">score: {{movie.score}} </p>
 </section>

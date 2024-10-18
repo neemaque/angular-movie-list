@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, NgIf} from '@angular/common';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MovieService} from '../movie.service';
 import {Movie} from '../movie';
@@ -8,7 +8,7 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, NgIf],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css',
 })
@@ -50,5 +50,9 @@ export class DetailsComponent {
   }
   decreaseScore(){
     if(this.newScore>0)this.newScore-=1;
+  }
+
+  finished(){
+    this.movie!.finished = true;
   }
 }

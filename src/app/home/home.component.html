@@ -1,21 +1,18 @@
-  <section>
-    <form>
-      <input type="text" placeholder="Filter by city" />
-      <button class="primary" type="button">Search</button>
-    </form>
-  </section>
-  <section>
+
+<div class="filters">
+  <div class="genres">
     <h3>Search by genre:</h3>
-    <div class="genres">
-      <a [routerLink]="['/genre/animated']">Animated</a>
-      <a [routerLink]="['/genre/action']">Action</a>
-      <a [routerLink]="['/genre/horror']">Horror</a>
-      <a [routerLink]="['/genre/romance']">Romance</a>
-    </div>
-  </section>
-  <section class="results">
-    <app-movie
-      *ngFor="let movie of moviesList"
-      [movie]="movie"
-    ></app-movie>
-  </section>
+    <a [routerLink]="['/genre/animated']">Animated</a>
+    <a [routerLink]="['/genre/action']">Action</a>
+    <a [routerLink]="['/genre/horror']">Horror</a>
+    <a [routerLink]="['/genre/romance']">Romance</a>
+  </div>
+
+</div>
+<section class="results">
+  <app-movie
+    *ngFor="let movie of moviesList"
+    [movie]="movie"
+  ></app-movie>
+</section>
+<button (click)="addMovie()">Add a movie</button>

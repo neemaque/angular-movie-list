@@ -1,0 +1,17 @@
+button{
+    background-color:darkslateblue;
+    color: white;
+    border:none;
+    border-radius: 10%;
+    padding: 10px;
+    font-size: large;
+    display:table-row;
+    margin-top: 10px;  
+    cursor: pointer; 
+}
+label{
+    display:table-row;
+}
+input{
+    font-size: large;
+}

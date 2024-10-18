@@ -1,19 +1,24 @@
 <h1>{{ movie?.name }}</h1>
 <div class="container">
 <form [formGroup]="formChange" (submit)="submitChange()">
-    <label for="name">Movie Name:</label>
+    <label for="name">Change Movie Name:</label>
     <input id="name" type="text" formControlName="name"/>
     
-    <label for="genre">Movie Genre:</label>
-    <input id="genre" type="text" formControlName="genre" value="{{ movie?.genre }}" />
+    <label for="genre">Change Movie Genre:</label>
+    <input id="genre" type="text" formControlName="genre"/>
     
-    <label for="review">Your Review:</label>
-    <input id="review" type="text" formControlName="review" value="{{ movie?.review }}" />
+    <div *ngIf="movie?.finished">
+    <label for="review">Change Your Review:</label>
+    <input id="review" type="text" formControlName="review"/>
 
     <label>Score: {{ newScore }} / 5</label>
     <button (click)="increaseScore()" class="scoreButtons">+</button> <button (click)="decreaseScore()" class="scoreButtons">-</button>
+    </div>
 
-    <button class="submit" type="submit">Done</button>
+    <div *ngIf="!movie?.finished">
+        <button (click)="finished()" class="finishedButton">I finished it</button>
+    </div>
+    <button class="submit" type="submit">Save</button>
 
 </form>
 </div>

@@ -1,7 +1,27 @@
 .genres{
-    width: 100%;
+    width: 30%;
     padding-bottom: 30px;
+    display: inline-block;
 }
 .genres a{
     padding-right: 50px;
+}
+.filters{
+    width:100%;
+    display: inline;
+}
+form{
+    width:30%;
+    display: inline-block;
+}
+button{
+    background-color:darkslateblue;
+    color: white;
+    border:none;
+    border-radius: 10%;
+    padding: 10px;
+    font-size: large;
+    display:table-row;
+    margin-top: 10px;  
+    cursor: pointer; 
 }
