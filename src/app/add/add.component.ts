@@ -3,11 +3,12 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { Movie } from '../movie';
 import {MovieService} from '../movie.service';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import { ButtonDirective } from '../button.directive';
 
 @Component({
   selector: 'app-add',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, ButtonDirective],
   templateUrl: './add.component.html',
   styleUrl: './add.component.css',
 })

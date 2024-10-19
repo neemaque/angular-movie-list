@@ -1,6 +1,6 @@
 
-<section class="movie_listing">
-    <a [routerLink]="['/details', movie.id]"><h2>{{ movie.name }}</h2></a>
+<section appMovie class="movie_listing">
+    <a appMouseOnPurple [routerLink]="['/details', movie.id]"><h2>{{ movie.name }}</h2></a>
     <h6 *ngIf="!movie.finished">(Unfinished)</h6>
     <p *ngIf="movie.finished">{{ movie. review }}<p>
     <p *ngIf="movie.finished">score: {{movie.score}} </p>
