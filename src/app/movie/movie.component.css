@@ -8,3 +8,10 @@ a{
 h6{
     font-weight: normal;
 }
+.movie-image {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    margin-top: 10px;
+    border-radius: 5px;
+  }

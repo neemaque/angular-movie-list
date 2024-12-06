@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {CommonModule} from '@angular/common';
 import { Movie } from '../movie';
 import {MovieComponent} from '../movie/movie.component';
@@ -6,28 +6,26 @@ import {MovieService} from '../movie.service';
 import {RouterModule, RouterOutlet, Router} from '@angular/router';
 import { MouseOnDirective } from '../mouse-on.directive';
 import { ButtonDirective } from '../button.directive';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, MovieComponent, RouterModule, RouterOutlet, MouseOnDirective, ButtonDirective],
+  imports: [CommonModule, MovieComponent, RouterModule, RouterOutlet, MouseOnDirective, ButtonDirective, HttpClientModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 
-export class HomeComponent {
-  moviesList: Movie[] = [];
-  movieService: MovieService = inject(MovieService)
-  addId: Number;
-
-  constructor(private router: Router){
-    this.moviesList = this.movieService.getAllMovies();
-    this.addId = this.moviesList.length+1;
-  }
+export class HomeComponent{
+  moviesList: any[] = [];
   
-  addMovie(){
-    this.addId = this.moviesList.length+1;
-    console.log("hi");
-    this.router.navigateByUrl('add/'+ this.addId);
+  constructor(private httpClient: HttpClient) {
+    this.loadMovies();
+  }
+  private movieService = new MovieService(this.httpClient);
+  loadMovies(): void {
+    this.movieService.getAllMovies().subscribe((data: any) => {
+      this.moviesList = data;
+    });
   }
 }

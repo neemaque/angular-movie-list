@@ -7,11 +7,6 @@ import { AddComponent } from './add/add.component';
 
 const routeConfig: Routes = [
     {
-      path: '',
-      component: LoginComponent,
-      title: 'Login page',
-    },
-    {
       path: 'home',
       component: HomeComponent,
       title: 'Home page',

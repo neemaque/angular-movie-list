@@ -1,18 +1,4 @@
-
-<div class="filters">
-  <div class="genres">
-    <h3 >Search by genre:</h3>
-    <a appMouseOn [routerLink]="['/genre/animated']">Animated</a>
-    <a appMouseOn [routerLink]="['/genre/action']">Action</a>
-    <a appMouseOn [routerLink]="['/genre/horror']">Horror</a>
-    <a appMouseOn [routerLink]="['/genre/romance']">Romance</a>
-  </div>
-
-</div>
-<section class="results">
-  <app-movie
+<app-movie
     *ngFor="let movie of moviesList"
     [movie]="movie"
-  ></app-movie>
-</section>
-<button appButton (click)="addMovie()">Add a movie</button>
+></app-movie>

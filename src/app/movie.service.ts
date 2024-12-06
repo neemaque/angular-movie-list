@@ -1,39 +1,42 @@
-import { Injectable } from '@angular/core';
-import { Movie } from './movie';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 
 export class MovieService {
-  moviesList: Movie[] = [
-    {id: 1, name: 'Yellow Submarine', finished: false, review: 'It is really good.', score: 5, genre: 'animated'},
-    {id: 2, name: 'Fantastic Mr. Fox', finished: true, review: 'Such a nice story.', score: 4, genre: 'animated'},
-    {id: 3, name: 'IT', finished: true, review: 'Not as scary as I thought.', score: 2, genre: 'horror'},
-  ]
-  getAllMovies(): Movie[] {
-    return this.moviesList.filter((movie) => movie.id > 0)
+  private apiUrl = 'https://6750b4bb69dc1669ec1c0df2.mockapi.io/api/v1/movies';
+  
+
+  constructor(private http: HttpClient) {}
+
+  // GET all movies
+  getAllMovies(): Observable<any> {
+    return this.http.get(this.apiUrl);
   }
-  getMovieById(id: number): Movie | undefined {
-    return this.moviesList.find((movie) => movie.id === id)
+
+  // GET a single movie by ID
+  getMovieById(id: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${id}`);
   }
-  getMoviesByGenre(genre: string): Movie[]{
-    return this.moviesList.filter(movie => movie.genre === genre)
+
+  // POST a new movie
+  addMovie(movie: any): Observable<any> {
+    return this.http.post(this.apiUrl, movie);
   }
-  changeMovie(id: number, name: string, finished: boolean, review: string, score: number, genre:string){
-    this.moviesList[id-1].name = name;
-    this.moviesList[id-1].review = review;
-    this.moviesList[id-1].genre = genre;
-    this.moviesList[id-1].score = score;
+
+  // PUT update a movie
+  changeMovie(id: number, movie: any): void {
+    console.log(movie);
+    console.log(id);
+    console.log(`${this.apiUrl}/${id}`);
+    this.http.put("${this.apiUrl}/${id}", movie);
   }
-  addMovie(name: string){
-    const movie = {id: 0, name: '', finished: false, review: '', score: 0, genre: ''}
-    movie.id = this.moviesList.length+1;
-    movie.name = name;
-    movie.finished = false;
-    movie.review = "";
-    movie.score = 0;
-    movie.genre = "";
-    this.moviesList.push(movie);
+
+  // DELETE a movie
+  deleteMovie(id: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }

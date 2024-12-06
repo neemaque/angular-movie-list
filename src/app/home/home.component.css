@@ -25,3 +25,10 @@ button{
     margin-top: 10px;  
     cursor: pointer; 
 }
+.movie-image {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    margin-top: 10px;
+    border-radius: 5px;
+  }

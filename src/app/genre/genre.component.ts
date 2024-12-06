@@ -22,6 +22,5 @@ export class GenreComponent {
 
   constructor(){
     this.genre = String(this.route.snapshot.params['genre']);
-    this.moviesList = this.movieService.getMoviesByGenre(this.genre);
   }
 }

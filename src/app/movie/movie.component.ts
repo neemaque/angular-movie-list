@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Movie } from '../movie';
 import {CommonModule, NgIf} from '@angular/common';
 import {RouterModule, RouterOutlet} from '@angular/router';
 import { MouseOnPurpleDirective } from '../mouse-on-purple.directive';
@@ -13,5 +12,5 @@ import { MovieDirective } from '../movie.directive';
   styleUrl: './movie.component.css'
 })
 export class MovieComponent {
-  @Input() movie!: Movie;
+  @Input() movie!: any;
 }
