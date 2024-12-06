@@ -18,14 +18,29 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 export class HomeComponent{
   moviesList: any[] = [];
+  genresList: any[] = [];
+  router = inject(Router);
   
   constructor(private httpClient: HttpClient) {
     this.loadMovies();
+    this.loadGenres();
   }
+  
   private movieService = new MovieService(this.httpClient);
+  
   loadMovies(): void {
     this.movieService.getAllMovies().subscribe((data: any) => {
       this.moviesList = data;
     });
+  }
+
+  loadGenres(): void {
+    this.movieService.getAllGenres().subscribe((data: any) => {
+      this.genresList = data;
+    });
+  }
+
+  addMovie(){
+    this.router.navigateByUrl('add');
   }
 }

@@ -4,8 +4,8 @@
     <label for="name">Change Movie Name:</label>
     <input id="name" type="text" formControlName="name"/>
     
-    <label for="genre">Change Movie Genre:</label>
-    <input id="genre" type="text" formControlName="genre"/>
+    <label for="imageUrl">Change Image Url:</label>
+    <input id="imageUrl" type="text" formControlName="imageUrl"/>
     
     <div *ngIf="movie?.finished">
     <label for="review">Change Your Review:</label>
@@ -20,5 +20,10 @@
     </div>
     <button class="submit" type="submit">Save</button>
 
+    
+
 </form>
+</div>
+<div>
+    <button (click)="deleteMovie()" class="finishedButton">Delete Movie</button>
 </div>

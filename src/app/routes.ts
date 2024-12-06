@@ -17,12 +17,12 @@ const routeConfig: Routes = [
       title: 'Movie details',
     },
     {
-      path: 'genre/:genre',
+      path: 'genre/:id',
       component: GenreComponent,
       title: 'Movies of a Genre',
     },
     {
-      path: 'add/:id',
+      path: 'add',
       component: AddComponent,
       title: 'Add a movie',
     }

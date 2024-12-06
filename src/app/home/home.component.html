@@ -1,4 +1,16 @@
+<h1>Genres:</h1>
+<div class="filters">
+    <div class="genres">
+        <div *ngFor="let genre of genresList">
+            <a appMouseOn [routerLink]="['/genre', genre.id]">{{ genre.name }}</a>
+        </div>
+    </div>
+</div>
+
+<H1>All Movies:</H1>
 <app-movie
     *ngFor="let movie of moviesList"
     [movie]="movie"
 ></app-movie>
+
+<button appButton (click)="addMovie()">Add a movie</button>
