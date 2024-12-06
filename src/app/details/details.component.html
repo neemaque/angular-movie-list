@@ -1,29 +1,28 @@
-<h1>{{ movie?.name }}</h1>
-<div class="container">
-<form [formGroup]="formChange" (submit)="submitChange()">
-    <label for="name">Change Movie Name:</label>
-    <input id="name" type="text" formControlName="name"/>
-    
-    <label for="imageUrl">Change Image Url:</label>
-    <input id="imageUrl" type="text" formControlName="imageUrl"/>
-    
-    <div *ngIf="movie?.finished">
-    <label for="review">Change Your Review:</label>
-    <input id="review" type="text" formControlName="review"/>
+<div class="centered-horizontal">
+    <h1>{{ movie?.name }}</h1>
+    <div class="container">
+    <form [formGroup]="formChange" (submit)="submitChange()">
+        <label for="name">Change Movie Name:</label>
+        <input id="name" type="text" formControlName="name"/>
+        
+        <label for="imageUrl">Change Image Url:</label>
+        <input id="imageUrl" type="text" formControlName="imageUrl"/>
+        
+        <div *ngIf="movie?.finished">
+        <label for="review">Change Your Review:</label>
+        <input id="review" type="text" formControlName="review"/>
 
-    <label>Score: {{ newScore }} / 5</label>
-    <button (click)="increaseScore()" class="scoreButtons">+</button> <button (click)="decreaseScore()" class="scoreButtons">-</button>
+        <label>Score: {{ newScore }} / 5</label>
+        <button (click)="increaseScore()" class="scoreButtons">+</button> <button (click)="decreaseScore()" class="scoreButtons">-</button>
+        </div>
+
+        <div *ngIf="!movie?.finished">
+            <button (click)="finished()" class="finishedButton">I finished it</button>
+        </div>
+        <button class="submit" type="submit">Save</button>
+    </form>
     </div>
-
-    <div *ngIf="!movie?.finished">
-        <button (click)="finished()" class="finishedButton">I finished it</button>
+    <div>
+        <button (click)="deleteMovie()" class="finishedButton">Delete Movie</button>
     </div>
-    <button class="submit" type="submit">Save</button>
-
-    
-
-</form>
-</div>
-<div>
-    <button (click)="deleteMovie()" class="finishedButton">Delete Movie</button>
 </div>

@@ -1,14 +1,13 @@
 <div class="centered">
     <div class="container">
-        <form [formGroup]="formLogin" (submit)="Login()">
+        <form [formGroup]="formRegister" (submit)="Register()">
             <label for="username">Username:</label>
             <input id="username" type="text" formControlName="username"/>
             
             <label for="password">Password:</label>
             <input id="password" type="text" formControlName="password"/>
     
-            <button class="finishedButton" type="submit">Login</button>
+            <button class="finishedButton" type="submit">Register</button>
         </form>
-        <button class="registerButton" (click)="Register()">Don't have an account?</button>
     </div>
 </div>

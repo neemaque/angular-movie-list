@@ -40,21 +40,6 @@ export class DetailsComponent {
     this.loadGenres();
   }
   loadGenres(): void {
-    if (!this.movie) {
-      console.error('Movie data is not available.');
-      return;
-    }
-    this.movieService.getAllGenres().subscribe((data: any) => {
-      this.genresList = data;
-    });
-    
-    this.movie.genres?.forEach((genreId: number) => {
-      const genre = this.genresList.find((g: any) => g.id === genreId);
-      if (genre) {
-        this.movieGenres.push(genre);
-      }
-    });
-    console.log(this.movieGenres);
   }
 
   formChange = new FormGroup({
@@ -103,12 +88,10 @@ export class DetailsComponent {
     this.movieService.deleteMovie(this.movieId).subscribe({
       next: (response) => {
         console.log('Movie deleted successfully:', response);
-        // Optionally, navigate away or show a success message
-        this.router.navigate(['/home']);  // Redirect to the movies list after deletion
+        this.router.navigate(['/home']);
       },
       error: (err) => {
         console.error('Error deleting movie:', err);
-        // Show an error message or handle the error as needed
       }
     });
   }
