@@ -12,11 +12,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   standalone: true,
   imports: [CommonModule, MovieComponent, RouterModule, RouterOutlet, HttpClientModule],
   templateUrl: './genre.component.html',
-  styles: `.finishedButton{
-  margin-bottom:20px;
-  width:10%;
-  font-size: large;
-  }`
+  styleUrl: './genre.component.css',
 })
 export class GenreComponent {
   route: ActivatedRoute = inject(ActivatedRoute);

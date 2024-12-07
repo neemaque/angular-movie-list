@@ -13,7 +13,7 @@
         <input id="review" type="text" formControlName="review"/>
 
         <label>Score: {{ newScore }} / 5</label>
-        <button (click)="increaseScore()" class="scoreButtons">+</button> <button (click)="decreaseScore()" class="scoreButtons">-</button>
+        <button (click)="increaseScore()" class="scoreButtons" type="button">+</button> <button (click)="decreaseScore()" class="scoreButtons" type="button">-</button>
         </div>
 
         <div *ngIf="!movie?.finished">

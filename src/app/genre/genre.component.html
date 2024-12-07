@@ -1,9 +1,12 @@
-<h3 style="margin-bottom: 20px; margin-top: 7px;">All movies in the {{genre?.name}} genre:</h3>
-<section class="results">
-    <app-movie
-      *ngFor="let movie of moviesList"  
+
+<div class="centered-horizontal">
+  <h3 style="margin-bottom: 20px; margin-top: 7px;">All movies in the {{genre?.name}} genre:</h3>
+  <div class="movies-grid">
+      <app-movie
+      *ngFor="let movie of moviesList"
       [movie]="movie"
-    ></app-movie>
-  </section>
+      ></app-movie>
+  </div>
   
 <button (click)="deleteGenre()" class="finishedButton">Delete Genre</button>
+</div>

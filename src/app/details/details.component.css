@@ -25,6 +25,15 @@ label {
   width:100%;
   font-size: large;
 }
+button{
+  padding: 5px 10px;
+  font-size: 20px;
+  color: white;
+  background-color: darkslateblue;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
 
 .container{
   width:100%;

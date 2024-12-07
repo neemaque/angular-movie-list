@@ -1,4 +1,3 @@
-<h1>Genres:</h1>
 <div class="filters">
     <div class="genres">
         <div *ngFor="let genre of genresList">
@@ -14,10 +13,13 @@
     </div>
 </div>
 
-<H1>All Movies:</H1>
-<app-movie
-    *ngFor="let movie of moviesList"
-    [movie]="movie"
-></app-movie>
-
-<button appButton (click)="addMovie()">Add a movie</button>
+<div class="centered-horizontal">
+    <H1>All Movies:</H1>
+    <div class="movies-grid">
+        <app-movie
+        *ngFor="let movie of moviesList"
+        [movie]="movie"
+        ></app-movie>
+    </div>
+    <button appButton (click)="addMovie()">Add a movie</button>
+</div>
