@@ -14,7 +14,7 @@ export class MovieDirective {
     this.unMove();
   }
   private move() {
-    this.el.nativeElement.style.marginBottom = "60px";
+    this.el.nativeElement.style.marginBottom = "30px";
   }
   
   private unMove(){

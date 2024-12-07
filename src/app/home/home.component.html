@@ -4,6 +4,13 @@
         <div *ngFor="let genre of genresList">
             <a appMouseOn [routerLink]="['/genre', genre.id]">{{ genre.name }}</a>
         </div>
+        <div class="container">
+            <form [formGroup]="formGenre" (submit)="addGenre()">
+                <label for="name">Add a genre:</label>
+                <input id="name" type="text" formControlName="name"/>
+                <button class="submit" type="submit">Add</button>
+            </form>
+        </div>
     </div>
 </div>
 

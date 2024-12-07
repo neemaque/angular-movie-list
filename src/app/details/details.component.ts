@@ -35,11 +35,18 @@ export class DetailsComponent {
     this.movieService.getMovieById(this.movieId).subscribe((data: any) => {
       this.movie = data;
       this.newScore = this.movie?.score ?? 0; 
+      this.loadGenres();
     });
     
-    this.loadGenres();
   }
   loadGenres(): void {
+    console.log(this.movie?.genres);
+    for(const genreId of this.movie?.genres)
+    {
+      this.movieService.getGenreById(Number(genreId)).subscribe((data: any) => {
+        this.movieGenres.push(data);
+      });
+    }
   }
 
   formChange = new FormGroup({

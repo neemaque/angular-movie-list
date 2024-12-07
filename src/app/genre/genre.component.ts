@@ -12,7 +12,11 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   standalone: true,
   imports: [CommonModule, MovieComponent, RouterModule, RouterOutlet, HttpClientModule],
   templateUrl: './genre.component.html',
-  styles: ``
+  styles: `.finishedButton{
+  margin-bottom:20px;
+  width:10%;
+  font-size: large;
+  }`
 })
 export class GenreComponent {
   route: ActivatedRoute = inject(ActivatedRoute);
@@ -21,6 +25,8 @@ export class GenreComponent {
   private movieService = new MovieService(this.httpClient);
   genreId: number;
   genre: any;
+  
+  router = inject(Router);
 
   constructor(private httpClient: HttpClient){
     this.genreId = Number(this.route.snapshot.params['id']);
@@ -30,8 +36,20 @@ export class GenreComponent {
     this.getMoviesOfGenre();
   }
   getMoviesOfGenre(): void {
+    console.log(String(this.genre?.id));
     this.movieService.getMoviesByGenre(this.genreId).subscribe((data: any) => {
       this.moviesList = data;
+    });
+  }
+  deleteGenre(){
+    this.movieService.deleteGenre(this.genreId).subscribe({
+      next: (response) => {
+        console.log('Genre deleted successfully:', response);
+        this.router.navigate(['/home']);
+      },
+      error: (err) => {
+        console.error('Error deleting genre:', err);
+      }
     });
   }
 }

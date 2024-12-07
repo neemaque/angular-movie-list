@@ -7,11 +7,12 @@ import {RouterModule, RouterOutlet, Router} from '@angular/router';
 import { MouseOnDirective } from '../mouse-on.directive';
 import { ButtonDirective } from '../button.directive';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, MovieComponent, RouterModule, RouterOutlet, MouseOnDirective, ButtonDirective, HttpClientModule],
+  imports: [CommonModule, MovieComponent, RouterModule, RouterOutlet, MouseOnDirective, ButtonDirective, HttpClientModule, ReactiveFormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
@@ -27,6 +28,10 @@ export class HomeComponent{
   }
   
   private movieService = new MovieService(this.httpClient);
+
+  formGenre = new FormGroup({
+    name: new FormControl(),
+  });
   
   loadMovies(): void {
     this.movieService.getAllMovies().subscribe((data: any) => {
@@ -42,5 +47,19 @@ export class HomeComponent{
 
   addMovie(){
     this.router.navigateByUrl('add');
+  }
+
+  addGenre(){
+    const newGenre = {
+      "name": this.formGenre.value.name ?? '',
+    };
+    this.movieService.addGenre(newGenre).subscribe({
+      next: (response) => {
+        window.location.href = window.location.href;
+      },
+      error: (err) => {
+        console.error('Error adding genre:', err);
+      }
+    });
   }
 }

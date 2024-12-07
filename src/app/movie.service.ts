@@ -27,9 +27,6 @@ export class MovieService {
   }
 
   changeMovie(id: number, movie: any): Observable<any> {
-    console.log(movie);
-    console.log(id);
-    console.log(`${this.apiUrlMovies}/${id}`);
     return this.http.put(`${this.apiUrlMovies}/${id}`, movie);
   }
 
@@ -49,5 +46,27 @@ export class MovieService {
     return this.http.get<any[]>(this.apiUrlMovies).pipe(
       map((movies) => movies.filter((movie) => movie.genres.includes(genreId)))
     );
+  }
+  getMovieGenres(movie: any): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrlGenres).pipe(
+      map((genres) => {
+        if (!movie?.genres || !Array.isArray(movie.genres)) {
+          console.warn('Invalid or missing genres in the movie:', movie.genres);
+          return [];
+        }
+  
+        // Convert all IDs in movie.genres to strings for comparison
+        const movieGenreIds = movie.genres.map(String);
+  
+        return genres.filter((genre) => movieGenreIds.includes(genre.id));
+      })
+    );
+  }
+
+  addGenre(genre: any): Observable<any> {
+    return this.http.post(this.apiUrlGenres, genre);
+  }
+  deleteGenre(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrlGenres}/${id}`);
   }
 }

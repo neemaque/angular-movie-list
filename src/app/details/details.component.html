@@ -19,6 +19,13 @@
         <div *ngIf="!movie?.finished">
             <button (click)="finished()" class="finishedButton">I finished it</button>
         </div>
+        
+        <h3>Genres:</h3>
+        <div>
+            <div *ngFor="let genre of movieGenres" class="genres">
+                {{genre.name}}
+            </div>
+        </div>
         <button class="submit" type="submit">Save</button>
     </form>
     </div>
